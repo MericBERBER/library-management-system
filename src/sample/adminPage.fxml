@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="1163.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.adminPageController">
+  <tabs>
+    <Tab text="User">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="userTableView" layoutX="14.0" layoutY="14.0" prefHeight="512.0" prefWidth="1141.0">
+                    <columns>
+                      <TableColumn fx:id="ssnColumn" prefWidth="135.00003051757812" text="SSN" />
+                      <TableColumn fx:id="firstColumn" prefWidth="149.0" text="Firstname" />
+                       <TableColumn fx:id="lastColumn" prefWidth="118.0" text="Lastname" />
+                       <TableColumn fx:id="birthColumn" prefWidth="106.0" text="Birth Date" />
+                       <TableColumn fx:id="streetColumn" prefWidth="100.0" text="Street" />
+                       <TableColumn fx:id="zipColumn" prefWidth="90.0" text="Zip Code" />
+                       <TableColumn fx:id="cityColumn" prefWidth="67.0" text="City" />
+                       <TableColumn fx:id="userColumn" prefWidth="180.0" text="Username" />
+                       <TableColumn fx:id="passColumn" prefWidth="195.0" text="Password" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="30.0" layoutY="587.0" mnemonicParsing="false" onAction="#getUsers" text="All Users" >
+                      <font>
+                          <Font name="System Bold" size="15.0" />
+                      </font>
+                  </Button>
+                  <TextField fx:id="ssn" layoutX="14.0" layoutY="538.0" prefHeight="31.0" prefWidth="125.0" promptText="SSN" />
+                  <TextField fx:id="firstName" layoutX="149.0" layoutY="538.0" prefHeight="31.0" prefWidth="137.0" promptText="First Name" />
+                  <TextField fx:id="lastName" layoutX="296.0" layoutY="538.0" prefHeight="31.0" prefWidth="110.0" promptText="Last Name" />
+                  <TextField fx:id="birthDate" layoutX="417.0" layoutY="538.0" prefHeight="31.0" prefWidth="112.0" promptText="Birth Date" />
+                  <TextField fx:id="streetName" layoutX="537.0" layoutY="538.0" prefHeight="31.0" prefWidth="107.0" promptText="Street" />
+                  <TextField fx:id="zipCode" layoutX="653.0" layoutY="538.0" prefHeight="31.0" prefWidth="76.0" promptText="Zip Code" />
+                  <TextField fx:id="city" layoutX="742.0" layoutY="538.0" prefHeight="31.0" prefWidth="76.0" promptText="City" />
+                  <TextField fx:id="userName" layoutX="831.0" layoutY="538.0" prefHeight="31.0" prefWidth="89.0" promptText="User Name" />
+                  <TextField fx:id="pass" layoutX="935.0" layoutY="538.0" prefHeight="31.0" prefWidth="106.0" promptText="Password" />
+                  <Button layoutX="1052.0" layoutY="538.0" mnemonicParsing="false" onAction="#addUser" prefHeight="31.0" prefWidth="65.0" text="Add">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                   <Button layoutX="1053.0" layoutY="636.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="31.0" prefWidth="66.0" text="Delete">
+                       <font>
+                           <Font name="System Bold" size="15.0" />
+                       </font>
+                   </Button>
+                   <Button layoutX="1053.0" layoutY="587.0" mnemonicParsing="false" onAction="#searchUsers" prefHeight="31.0" prefWidth="67.0" text="Search">
+                       <font>
+                           <Font name="System Bold" size="15.0" />
+                       </font>
+                   </Button>
+                   <Button layoutX="1053.0" layoutY="683.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="31.0" prefWidth="73.0" text="Update">
+                       <font>
+                           <Font name="System Bold" size="15.0" />
+                       </font>
+                   </Button>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1117.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="/img/useradd.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1125.0" layoutY="585.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="/img/search.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1125.0" layoutY="634.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="/img/delete.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1125.0" layoutY="681.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="/img/update.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Book">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="bookTableView" layoutX="14.0" layoutY="22.0" prefHeight="467.0" prefWidth="1147.0">
+                    <columns>
+                      <TableColumn fx:id="idColumn" prefWidth="96.00001525878906" text="ID" />
+                      <TableColumn fx:id="titleColumn" prefWidth="316.0" text="Title" />
+                        <TableColumn fx:id="genreColumn" prefWidth="163.0" text="Genre" />
+                        <TableColumn fx:id="pageColumn" prefWidth="87.0" text="Page" />
+                        <TableColumn fx:id="publisherColumn" prefWidth="141.0" text="Publisher" />
+                        <TableColumn fx:id="pieceColumn" prefWidth="102.0" text="Piece" />
+                        <TableColumn fx:id="pDateColumn" prefWidth="136.0" text="Publish Date" />
+                        <TableColumn fx:id="authorColumn" prefWidth="106.0" text="Author" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="976.0" layoutY="692.0" mnemonicParsing="false" onAction="#getBooks" prefHeight="31.0" prefWidth="166.0" text="All Books">
+                   <font>
+                       <Font name="System Bold" size="15.0" />
+                   </font>
+                  </Button>
+                  <TextField fx:id="bookID" layoutX="12.0" layoutY="496.0" prefHeight="31.0" prefWidth="100.0" promptText="BOOK ID" />
+                  <TextField fx:id="title" layoutX="126.0" layoutY="496.0" prefHeight="31.0" prefWidth="163.0" promptText="TITLE" />
+                  <TextField fx:id="genre" layoutX="302.0" layoutY="496.0" prefHeight="31.0" prefWidth="141.0" promptText="GENRE" />
+                  <TextField fx:id="pageNumber" layoutX="465.0" layoutY="496.0" prefHeight="31.0" prefWidth="107.0" promptText="PAGE NO" />
+                  <TextField fx:id="publisher" layoutX="588.0" layoutY="496.0" prefHeight="31.0" prefWidth="126.0" promptText="PUBLİSHER" />
+                  <TextField fx:id="piece" layoutX="726.0" layoutY="496.0" prefHeight="31.0" prefWidth="117.0" promptText="PIECE" />
+                  <TextField fx:id="publishedDate" layoutX="864.0" layoutY="496.0" prefHeight="31.0" prefWidth="129.0" promptText="PUBLISH DATE" />
+                  <TextField fx:id="authorID" layoutX="1012.0" layoutY="496.0" prefHeight="31.0" prefWidth="113.0" promptText="AUTHOR ID" />
+                  <Button layoutX="14.0" layoutY="548.0" mnemonicParsing="false" onAction="#addBook" prefHeight="31.0" prefWidth="105.0" text="ADD">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="594.0" mnemonicParsing="false" onAction="#deleteBook" prefHeight="31.0" prefWidth="105.0" text="DELETE">
+                      <font>
+                          <Font name="System Bold" size="15.0" />
+                      </font>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="641.0" mnemonicParsing="false" onAction="#updateBook" prefHeight="31.0" prefWidth="105.0" text="UPDATE">
+                      <font>
+                          <Font name="System Bold" size="15.0" />
+                      </font>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="692.0" mnemonicParsing="false" onAction="#searchBook" prefHeight="31.0" prefWidth="105.0" text="SEARCH">
+                      <font>
+                          <Font name="System Bold" size="15.0" />
+                      </font>
+                  </Button>
+                  <ImageView fitHeight="31.0" fitWidth="45.0" layoutX="140.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="/img/addbook.png" />
+                     </image></ImageView>
+                  <ImageView fitHeight="31.0" fitWidth="45.0" layoutX="140.0" layoutY="594.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="/img/delete.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="31.0" fitWidth="45.0" layoutX="140.0" layoutY="641.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="/img/update.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="31.0" fitWidth="45.0" layoutX="140.0" layoutY="692.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="/img/search.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="168.0" layoutX="984.0" layoutY="535.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="/img/allbooks.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Author">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+               <TableView fx:id="authorTableView" layoutY="11.0" prefHeight="353.0" prefWidth="1163.0">
+                 <columns>
+                   <TableColumn fx:id="A_idColumn" prefWidth="158.99998474121094" text="authorID" />
+                   <TableColumn fx:id="A_FirstNameColumn" prefWidth="393.0" text="First Name" />
+                     <TableColumn fx:id="A_LastNameColumn" prefWidth="205.0" text="Last Name" />
+                     <TableColumn fx:id="A_dateColumn" prefWidth="184.0" text="Birth Date" />
+                     <TableColumn fx:id="A_cityColumn" prefWidth="217.0" text="City" />
+                 </columns>
+               </TableView>
+               <TextField fx:id="a_id" layoutX="25.0" layoutY="387.0" promptText="AUTHOR ID" />
+               <TextField fx:id="a_firstName" layoutX="246.0" layoutY="387.0" promptText="FIRST NAME" />
+               <TextField fx:id="a_lastName" layoutX="461.0" layoutY="387.0" promptText="LAST NAME" />
+               <TextField fx:id="a_birthDate" layoutX="682.0" layoutY="387.0" promptText="BIRTH DATE" />
+               <TextField fx:id="a_city" layoutX="914.0" layoutY="387.0" promptText="CITY" />
+               <Button layoutX="25.0" layoutY="441.0" mnemonicParsing="false" onAction="#addAuthor" prefHeight="31.0" prefWidth="132.0" text="ADD">
+                   <font>
+                       <Font name="System Bold" size="15.0" />
+                   </font>
+               </Button>
+               <Button layoutX="25.0" layoutY="491.0" mnemonicParsing="false" onAction="#deleteAuthor" prefHeight="31.0" prefWidth="132.0" text="DELETE">
+                   <font>
+                       <Font name="System Bold" size="15.0" />
+                   </font>
+               </Button>
+               <Button layoutX="25.0" layoutY="546.0" mnemonicParsing="false" onAction="#updateAuthor" prefHeight="31.0" prefWidth="132.0" text="UPDATE">
+                   <font>
+                       <Font name="System Bold" size="15.0" />
+                   </font>
+               </Button>
+               <Button layoutX="25.0" layoutY="595.0" mnemonicParsing="false" onAction="#searchAuthor" prefHeight="31.0" prefWidth="132.0" text="SEARCH">
+                   <font>
+                       <Font name="System Bold" size="15.0" />
+                   </font>
+               </Button>
+               <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="168.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="/img/addAuthor.png" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="168.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="/img/delete.png" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="168.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="/img/update.png" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="168.0" layoutY="594.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="/img/search.png" />
+                  </image>
+               </ImageView>
+               <Button layoutX="25.0" layoutY="643.0" mnemonicParsing="false" onAction="#getAuthor" prefHeight="31.0" prefWidth="132.0" text="ALL AUTHORS" >
+                   <font>
+                       <Font name="System Bold" size="15.0" />
+                   </font>
+               </Button>
+               <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="168.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="/img/allauthor.png" />
+                  </image>
+               </ImageView>
+            </children></AnchorPane>
+      <content>
+      </content>
+      </Tab>
+    <Tab text="Borrow">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+               <TableView fx:id="borrowTableView" layoutX="7.0" layoutY="12.0" prefHeight="291.0" prefWidth="1151.0">
+                 <columns>
+                   <TableColumn fx:id="borrowSSN" prefWidth="219.0" text="SSN" />
+                   <TableColumn fx:id="borrowID" prefWidth="184.0" text="BOOK ID" />
+                     <TableColumn fx:id="borrowDate" prefWidth="168.0" text="BORROW DATE" />
+                     <TableColumn fx:id="lastDate" prefWidth="236.0" text="LAST DATE" />
+                     <TableColumn fx:id="returnDate" prefWidth="343.0" text="RETURN DATE" />
+                 </columns>
+               </TableView>
+               <TextField fx:id="b_ssn" layoutX="14.0" layoutY="323.0" prefHeight="31.0" prefWidth="189.0" promptText="USER SSN" />
+               <TextField fx:id="b_id" layoutX="229.0" layoutY="323.0" prefHeight="31.0" prefWidth="156.0" promptText="BOOK ID" />
+               <Button layoutX="17.0" layoutY="405.0" mnemonicParsing="false" onAction="#addBorrow" prefHeight="31.0" prefWidth="140.0" text="ADD" >
+                   <font>
+                       <Font name="System Bold" size="15.0" />
+                   </font>
+               </Button>
+               <Button layoutX="17.0" layoutY="455.0" mnemonicParsing="false" onAction="#deleteBorrow" prefHeight="31.0" prefWidth="140.0" text="DELETE" >
+                   <font>
+                       <Font name="System Bold" size="15.0" />
+                   </font>
+               </Button>
+               <TextField fx:id="b_bDate" layoutX="430.0" layoutY="323.0" prefHeight="31.0" prefWidth="165.0" promptText="BORROW DATE" />
+               <TextField fx:id="b_lDate" layoutX="629.0" layoutY="323.0" prefHeight="31.0" prefWidth="199.0" promptText="LAST DATE" />
+               <TextField fx:id="b_rDate" layoutX="885.0" layoutY="323.0" prefHeight="31.0" prefWidth="220.0" promptText="RETURN DATE" />
+               <Button layoutX="17.0" layoutY="509.0" mnemonicParsing="false" onAction="#updateBorrow" prefHeight="31.0" prefWidth="140.0" text="UPDATE" >
+                   <font>
+                       <Font name="System Bold" size="15.0" />
+                   </font>
+               </Button>
+               <Button layoutX="17.0" layoutY="559.0" mnemonicParsing="false" onAction="#searchBorrow" prefHeight="25.0" prefWidth="140.0" text="SEARCH" >
+                   <font>
+                       <Font name="System Bold" size="15.0" />
+                   </font>
+               </Button>
+               <Button layoutX="17.0" layoutY="613.0" mnemonicParsing="false" onAction="#getBorrow" prefHeight="31.0" prefWidth="140.0" text="ALL BORROWS" >
+                   <font>
+                       <Font name="System Bold" size="15.0" />
+                   </font>
+               </Button>
+               <ImageView fitHeight="32.0" fitWidth="39.0" layoutX="184.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="/img/borrowAdd.png" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="32.0" fitWidth="39.0" layoutX="184.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="/img/deleteBorrow.png" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="32.0" fitWidth="39.0" layoutX="184.0" layoutY="509.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="/img/updateBorrow.png" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="32.0" fitWidth="39.0" layoutX="184.0" layoutY="559.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="/img/searchBorrow.png" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="32.0" fitWidth="39.0" layoutX="184.0" layoutY="613.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="/img/addBorrow.png" />
+                  </image>
+               </ImageView>
+            </children></AnchorPane>
+        <content>
+        </content>
+    </Tab>
+  </tabs>
+</TabPane>

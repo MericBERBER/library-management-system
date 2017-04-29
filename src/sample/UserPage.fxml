@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="824.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UserPageController">
+   <children>
+      <Separator layoutX="244.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="800.0" prefWidth="12.0" />
+      <Label alignment="CENTER" layoutX="5.0" layoutY="3.0" prefHeight="42.0" prefWidth="244.0" text="User Informations" underline="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="userSSN" layoutY="63.0" prefHeight="21.0" prefWidth="223.0" text="SSN :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="userFirstName" layoutY="103.0" prefHeight="21.0" prefWidth="223.0" text="Firstname :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="userLastName" layoutY="140.0" prefHeight="21.0" prefWidth="223.0" text="Lastname :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="userBirthDate" layoutY="176.0" prefHeight="21.0" prefWidth="223.0" text="Birth Date :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="userStreet" layoutY="212.0" prefHeight="21.0" prefWidth="223.0" text="Street :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="userZipCode" layoutY="251.0" prefHeight="21.0" prefWidth="223.0" text="Zip Code :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="userUserName" layoutY="319.0" prefHeight="21.0" prefWidth="223.0" text="Username :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="userPassword" layoutY="354.0" prefHeight="21.0" prefWidth="223.0" text="Password :" textFill="#06d5ff">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Button layoutX="16.0" layoutY="673.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="113.0" prefWidth="223.0" text="          EXIT" textAlignment="JUSTIFY">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
+      <Label fx:id="userCity" layoutY="284.0" prefHeight="21.0" prefWidth="223.0" text="City :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <ImageView fitHeight="113.0" fitWidth="121.0" layoutX="16.0" layoutY="674.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/img/logout.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="changePassword" layoutY="399.0" onAction="#changePassword" prefHeight="42.0" prefWidth="187.0" promptText="Change Password">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button layoutX="191.0" layoutY="399.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" />
+      <ImageView fitHeight="42.0" fitWidth="52.0" layoutX="191.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/img/refresh.png" />
+         </image>
+      </ImageView>
+      <ScrollPane layoutX="249.0" layoutY="3.0" prefHeight="459.0" prefWidth="952.0">
+         <content>
+            <TableView fx:id="bookTable" prefHeight="459.0" prefWidth="949.0">
+              <columns>
+                <TableColumn fx:id="titleColumn" prefWidth="238.0" text="Title" />
+                <TableColumn fx:id="genreColumn" prefWidth="118.0" text="Genre" />
+                 <TableColumn fx:id="authorColumn" prefWidth="152.0" text="Author" />
+                 <TableColumn fx:id="publisherColumn" prefWidth="151.0" text="Publisher" />
+                 <TableColumn fx:id="pageColumn" prefWidth="103.0" text="Page Number" />
+                 <TableColumn fx:id="dateColumn" prefWidth="171.0" text="Published Date" />
+              </columns>
+            </TableView>
+         </content></ScrollPane>
+      <ComboBox fx:id="genreBox" layoutX="268.0" layoutY="588.0" prefHeight="31.0" prefWidth="187.0" promptText="Genre" />
+      <TextField fx:id="title" layoutX="268.0" layoutY="480.0" promptText="Title" />
+      <TextField fx:id="author" layoutX="268.0" layoutY="532.0" promptText="Author" />
+      <Button fx:id="searchBtn" layoutX="270.0" layoutY="633.0" mnemonicParsing="false" onAction="#searchBook" prefHeight="31.0" prefWidth="187.0" text="SEARCH">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="31.0" fitWidth="42.0" layoutX="463.0" layoutY="633.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/img/search.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="42.0" layoutX="468.0" layoutY="532.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/img/author.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="42.0" layoutX="466.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/img/title.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="464.0" layoutY="588.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/img/genre.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="271.0" layoutY="686.0" mnemonicParsing="false" onAction="#searchRent" prefHeight="31.0" prefWidth="187.0" text="SHOW RENTS">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <ScrollPane layoutX="557.0" layoutY="476.0" prefHeight="241.0" prefWidth="641.0">
+         <content>
+            <TableView fx:id="borrowTable" prefHeight="255.0" prefWidth="642.0">
+              <columns>
+                <TableColumn fx:id="borrowTitleColumn" prefWidth="165.0" text="Book" />
+                <TableColumn fx:id="borrowDateColumn" prefWidth="148.0" text="Rent Date" />
+                 <TableColumn fx:id="lastDateColumn" prefWidth="156.0" text="Last Date" />
+                 <TableColumn fx:id="returnDateColumn" prefWidth="153.0" text="Return Date" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+     
+   </children>
+</AnchorPane>
