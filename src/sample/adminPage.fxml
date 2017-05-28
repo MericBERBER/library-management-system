@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -30,7 +31,7 @@
                        <TableColumn fx:id="passColumn" prefWidth="195.0" text="Password" />
                     </columns>
                   </TableView>
-                  <Button layoutX="30.0" layoutY="587.0" mnemonicParsing="false" onAction="#getUsers" text="All Users" >
+                  <Button layoutX="30.0" layoutY="587.0" mnemonicParsing="false" onAction="#getUsers" text="All Users">
                       <font>
                           <Font name="System Bold" size="15.0" />
                       </font>
@@ -220,7 +221,7 @@
                      <Image url="/img/search.png" />
                   </image>
                </ImageView>
-               <Button layoutX="25.0" layoutY="643.0" mnemonicParsing="false" onAction="#getAuthor" prefHeight="31.0" prefWidth="132.0" text="ALL AUTHORS" >
+               <Button layoutX="25.0" layoutY="643.0" mnemonicParsing="false" onAction="#getAuthor" prefHeight="31.0" prefWidth="132.0" text="ALL AUTHORS">
                    <font>
                        <Font name="System Bold" size="15.0" />
                    </font>
@@ -248,12 +249,12 @@
                </TableView>
                <TextField fx:id="b_ssn" layoutX="14.0" layoutY="323.0" prefHeight="31.0" prefWidth="189.0" promptText="USER SSN" />
                <TextField fx:id="b_id" layoutX="229.0" layoutY="323.0" prefHeight="31.0" prefWidth="156.0" promptText="BOOK ID" />
-               <Button layoutX="17.0" layoutY="405.0" mnemonicParsing="false" onAction="#addBorrow" prefHeight="31.0" prefWidth="140.0" text="ADD" >
+               <Button layoutX="17.0" layoutY="405.0" mnemonicParsing="false" onAction="#addBorrow" prefHeight="31.0" prefWidth="140.0" text="ADD">
                    <font>
                        <Font name="System Bold" size="15.0" />
                    </font>
                </Button>
-               <Button layoutX="17.0" layoutY="455.0" mnemonicParsing="false" onAction="#deleteBorrow" prefHeight="31.0" prefWidth="140.0" text="DELETE" >
+               <Button layoutX="17.0" layoutY="455.0" mnemonicParsing="false" onAction="#deleteBorrow" prefHeight="31.0" prefWidth="140.0" text="DELETE">
                    <font>
                        <Font name="System Bold" size="15.0" />
                    </font>
@@ -261,17 +262,17 @@
                <TextField fx:id="b_bDate" layoutX="430.0" layoutY="323.0" prefHeight="31.0" prefWidth="165.0" promptText="BORROW DATE" />
                <TextField fx:id="b_lDate" layoutX="629.0" layoutY="323.0" prefHeight="31.0" prefWidth="199.0" promptText="LAST DATE" />
                <TextField fx:id="b_rDate" layoutX="885.0" layoutY="323.0" prefHeight="31.0" prefWidth="220.0" promptText="RETURN DATE" />
-               <Button layoutX="17.0" layoutY="509.0" mnemonicParsing="false" onAction="#updateBorrow" prefHeight="31.0" prefWidth="140.0" text="UPDATE" >
+               <Button layoutX="17.0" layoutY="509.0" mnemonicParsing="false" onAction="#updateBorrow" prefHeight="31.0" prefWidth="140.0" text="UPDATE">
                    <font>
                        <Font name="System Bold" size="15.0" />
                    </font>
                </Button>
-               <Button layoutX="17.0" layoutY="559.0" mnemonicParsing="false" onAction="#searchBorrow" prefHeight="25.0" prefWidth="140.0" text="SEARCH" >
+               <Button layoutX="17.0" layoutY="559.0" mnemonicParsing="false" onAction="#searchBorrow" prefHeight="25.0" prefWidth="140.0" text="SEARCH">
                    <font>
                        <Font name="System Bold" size="15.0" />
                    </font>
                </Button>
-               <Button layoutX="17.0" layoutY="613.0" mnemonicParsing="false" onAction="#getBorrow" prefHeight="31.0" prefWidth="140.0" text="ALL BORROWS" >
+               <Button layoutX="17.0" layoutY="613.0" mnemonicParsing="false" onAction="#getBorrow" prefHeight="31.0" prefWidth="140.0" text="ALL BORROWS">
                    <font>
                        <Font name="System Bold" size="15.0" />
                    </font>
@@ -301,9 +302,125 @@
                      <Image url="/img/addBorrow.png" />
                   </image>
                </ImageView>
+               <Button layoutX="19.0" layoutY="661.0" mnemonicParsing="false" onAction="#getBorrowDetail" prefHeight="31.0" prefWidth="139.0" text="SHOW DETAİLS">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font></Button>
+               <Label fx:id="bdtitle" layoutX="293.0" layoutY="403.0" prefHeight="34.0" prefWidth="319.0">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font></Label>
+               <Label fx:id="bdgenre" layoutX="293.0" layoutY="454.0" prefHeight="34.0" prefWidth="319.0">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font></Label>
+               <Label fx:id="bdpageNumber" layoutX="293.0" layoutY="508.0" prefHeight="34.0" prefWidth="319.0">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font></Label>
+               <Label fx:id="bdauthorID" layoutX="293.0" layoutY="558.0" prefHeight="34.0" prefWidth="319.0">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font></Label>
+               <Label fx:id="bdauthorFullName" layoutX="293.0" layoutY="612.0" prefHeight="34.0" prefWidth="319.0">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font></Label>
+               <Label fx:id="bdpublisher" layoutX="293.0" layoutY="661.0" prefHeight="34.0" prefWidth="319.0">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font></Label>
+               <Label fx:id="bdpublishedDate" layoutX="696.0" layoutY="403.0" prefHeight="34.0" prefWidth="415.0">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font></Label>
+               <Label fx:id="bduserName" layoutX="696.0" layoutY="454.0" prefHeight="34.0" prefWidth="444.0">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font></Label>
+               <Label fx:id="bdpass" layoutX="696.0" layoutY="508.0" prefHeight="34.0" prefWidth="433.0">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font></Label>
+               <Label fx:id="bdbirthDate" layoutX="696.0" layoutY="558.0" prefHeight="34.0" prefWidth="449.0">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font></Label>
+               <Label fx:id="bdaddresses" layoutX="696.0" layoutY="612.0" prefHeight="34.0" prefWidth="442.0">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font></Label>
+               <ImageView fitHeight="32.0" fitWidth="39.0" layoutX="184.0" layoutY="661.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="/img/borrowdetail.png" />
+                  </image>
+               </ImageView>
             </children></AnchorPane>
         <content>
         </content>
     </Tab>
+      <Tab text="Other">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="otherBookTableView" layoutX="14.0" layoutY="51.0" prefHeight="200.0" prefWidth="514.0">
+                    <columns>
+                      <TableColumn fx:id="o_bookID" prefWidth="114.00001525878906" text="Book ID" />
+                      <TableColumn fx:id="o_bookTitle" minWidth="0.0" prefWidth="149.0" text="Title" />
+                        <TableColumn fx:id="o_bookGenre" minWidth="0.0" prefWidth="116.0" text="Genre" />
+                        <TableColumn fx:id="o_bookTimes" minWidth="0.0" prefWidth="133.0" text="Times" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="bookLimit" alignment="CENTER" layoutX="14.0" layoutY="276.0" prefHeight="31.0" prefWidth="420.0" promptText="Type the limit of books" />
+                  <Button layoutX="449.0" layoutY="276.0" mnemonicParsing="false" onAction="#getOtherBook" prefHeight="31.0" prefWidth="77.0" text="OK">
+                      <font>
+                          <Font name="System Bold" size="15.0" />
+                      </font>
+                  </Button>
+                  <TableView fx:id="otherBorrowDetailTableView" layoutX="551.0" layoutY="51.0" prefHeight="200.0" prefWidth="601.0">
+                     <columns>
+                        <TableColumn fx:id="obd_SSN" prefWidth="114.00001525878906" text="User SSN" />
+                        <TableColumn fx:id="obd_fullName" minWidth="0.0" prefWidth="149.0" text="Full Name" />
+                        <TableColumn fx:id="obd_borrowDate" minWidth="0.0" prefWidth="116.0" text="Borrow Date" />
+                        <TableColumn fx:id="obd_returnDate" minWidth="0.0" prefWidth="133.0" text="Return Date" />
+                        <TableColumn fx:id="obd_lastDate" minWidth="0.0" prefWidth="133.0" text="Last Date" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="553.0" layoutY="276.0" mnemonicParsing="false" onAction="#getOtherBookDetail" prefHeight="31.0" prefWidth="596.0" text="SHOW DETAILS">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <TableView fx:id="otherUserTableView" layoutX="14.0" layoutY="393.0" prefHeight="232.0" prefWidth="515.0">
+                    <columns>
+                      <TableColumn fx:id="ou_SSN" prefWidth="79.00001525878906" text="USER SSN" />
+                      <TableColumn fx:id="ou_firstNAme" prefWidth="163.0" text="First Name" />
+                        <TableColumn fx:id="ou_lastName" prefWidth="178.0" text="Last Name" />
+                        <TableColumn fx:id="ou_times" prefWidth="94.0" text="Times" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="userLimit" alignment="CENTER" layoutX="14.0" layoutY="641.0" prefHeight="31.0" prefWidth="432.0" promptText="Type the limit of users" />
+                  <Button layoutX="455.0" layoutY="641.0" mnemonicParsing="false" onAction="#getOtherUser" prefHeight="31.0" prefWidth="71.0" text="OK">
+                      <font>
+                          <Font name="System Bold" size="15.0" />
+                      </font>
+                  </Button>
+                  <TableView fx:id="userBookTableView" layoutX="553.0" layoutY="394.0" prefHeight="232.0" prefWidth="599.0">
+                    <columns>
+                      <TableColumn fx:id="ub_bookID" prefWidth="75.0" text="BOOK ID" />
+                      <TableColumn fx:id="ub_title" prefWidth="169.0" text="Title" />
+                        <TableColumn fx:id="ub_genre" prefWidth="94.0" text="Genre" />
+                        <TableColumn fx:id="ub_borrowDate" prefWidth="124.0" text="Borrow Date" />
+                        <TableColumn fx:id="ub_returnDate" prefWidth="136.0" text="Return Date" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="554.0" layoutY="641.0" mnemonicParsing="false" onAction="#getOtherUserDetail" prefHeight="31.0" prefWidth="599.0" text="SHOW DETAILS">
+                      <font>
+                          <Font name="System Bold" size="15.0" />
+                      </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </content></Tab>
   </tabs>
 </TabPane>

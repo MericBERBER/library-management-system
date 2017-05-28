@@ -8,6 +8,7 @@ import POJOs.User;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -18,6 +19,14 @@ import java.util.ResourceBundle;
 
 public class adminPageController implements Initializable {
     @FXML
+    private TableView<User.OtherUser> otherUserTableView;
+    @FXML
+    private TableView<Book.UserBook> userBookTableView;
+    @FXML
+    private TableView<Borrow.otherBorrowDetail> otherBorrowDetailTableView;
+    @FXML
+    private TableView<Book.OtherBook> otherBookTableView;
+    @FXML
     private TableView<Borrow> borrowTableView;
     @FXML
     private TableView<Author> authorTableView;
@@ -25,6 +34,42 @@ public class adminPageController implements Initializable {
     private TableView<User> userTableView;
     @FXML
     private TableView<Book> bookTableView;
+    @FXML
+    private TableColumn ou_SSN;
+    @FXML
+    private TableColumn ou_firstNAme;
+    @FXML
+    private TableColumn ou_lastName;
+    @FXML
+    private TableColumn ou_times;
+    @FXML
+    private TableColumn ub_bookID;
+    @FXML
+    private TableColumn ub_title;
+    @FXML
+    private TableColumn ub_genre;
+    @FXML
+    private TableColumn ub_returnDate;
+    @FXML
+    private TableColumn ub_borrowDate;
+    @FXML
+    private TableColumn obd_SSN;
+    @FXML
+    private TableColumn obd_fullName;
+    @FXML
+    private TableColumn obd_returnDate;
+    @FXML
+    private TableColumn obd_lastDate;
+    @FXML
+    private TableColumn obd_borrowDate;
+    @FXML
+    private TableColumn o_bookID;
+    @FXML
+    private TableColumn o_bookTitle;
+    @FXML
+    private TableColumn o_bookGenre;
+    @FXML
+    private TableColumn o_bookTimes;
     @FXML
     private TableColumn borrowSSN;
     @FXML
@@ -80,6 +125,10 @@ public class adminPageController implements Initializable {
     @FXML
     private TableColumn passColumn;
     @FXML
+    private TextField userLimit;
+    @FXML
+    private TextField bookLimit;
+    @FXML
     private TextField b_ssn;
     @FXML
     private TextField b_id;
@@ -133,10 +182,73 @@ public class adminPageController implements Initializable {
     private TextField userName;
     @FXML
     private TextField pass;
+    @FXML
+    private Label bdtitle;
+    @FXML
+    private Label bdgenre;
+    @FXML
+    private Label bdpageNumber;
+    @FXML
+    private Label bdpublisher;
+    @FXML
+    private Label bdpublishedDate;
+    @FXML
+    private Label bdauthorID;
+    @FXML
+    private Label bdauthorFullName;
+    @FXML
+    private Label bdbirthDate;
+    @FXML
+    private Label bduserName;
+    @FXML
+    private Label bdpass;
+    @FXML
+     private Label bdaddresses;
 
 
 
     adminLoginModel adminLoginModel = new adminLoginModel();
+
+    @FXML
+    private void getOtherUser(){
+        ObservableList<User.OtherUser> list = adminLoginModel.getOtherUser(userLimit.getText());
+        otherUserTableView.setItems(list);
+    }
+    @FXML
+    private void getOtherUserDetail(){
+        User.OtherUser otherUser= otherUserTableView.getSelectionModel().getSelectedItem();
+        ObservableList<Book.UserBook> userBooks = adminLoginModel.getOtherUserDetail(otherUser.getSSN());
+        userBookTableView.setItems(userBooks);
+    }
+    @FXML
+    private void getOtherBookDetail(){
+        Book.OtherBook otherBook = otherBookTableView.getSelectionModel().getSelectedItem();
+        ObservableList<Borrow.otherBorrowDetail> otherBorrowDetails = adminLoginModel.getOtherBookDetail(otherBook.getBookId());
+        otherBorrowDetailTableView.setItems(otherBorrowDetails);
+    }
+
+    @FXML
+    private void getOtherBook(){
+        ObservableList<Book.OtherBook> list = adminLoginModel.getOtherBook(bookLimit.getText());
+        otherBookTableView.setItems(list);
+    }
+
+    @FXML
+    private void getBorrowDetail() throws SQLException {
+        Borrow borrow = borrowTableView.getSelectionModel().getSelectedItem();
+        Borrow.BorrowDetail borrowDetail = adminLoginModel.getBorrowDetail(borrow.getSSN(),borrow.getBookID());
+        bdtitle.setText("->Title : " +borrowDetail.getTitle());
+        bdgenre.setText("->Genre : " +borrowDetail.getGenre());
+        bdpageNumber.setText("->Page Number : " +borrowDetail.getPageNumber());
+        bdpublisher.setText("->Publisher : "    +borrowDetail.getPublisher());
+        bdpublishedDate.setText("->Publish Date : " +borrowDetail.getPublishedDate());
+        bdauthorID.setText("->Author ID : " +borrowDetail.getAuthorID());
+        bdauthorFullName.setText("->Author Name : " +borrowDetail.getAuthorFullName());
+        bdaddresses.setText("->User Address : " +borrowDetail.getAddress());
+        bdbirthDate.setText("->User Birth Date : " +borrowDetail.getBirthDate());
+        bduserName.setText("->Username : " +borrowDetail.getUserName());
+        bdpass.setText("->Password : " +borrowDetail.getPass());
+    }
 
     @FXML
     private void updateBorrow() throws SQLException {
@@ -160,7 +272,7 @@ public class adminPageController implements Initializable {
     @FXML
     private void deleteBorrow() throws SQLException {
         Borrow borrow = borrowTableView.getSelectionModel().getSelectedItem();
-        adminLoginModel.deleteBorrow(borrow.getBorrowDate(),borrow.getReturnDate(),borrow.getLastDate(),borrow.getSSN(),borrow.getBookID());
+        adminLoginModel.deleteBorrow(borrow.getBorrowDate(),borrow.getLastDate(),borrow.getSSN(),borrow.getBookID());
         getBorrow();
     }
     @FXML
@@ -333,6 +445,24 @@ public class adminPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ub_bookID.setCellValueFactory(new PropertyValueFactory<Book.UserBook,String>("bookId"));
+        ub_genre.setCellValueFactory(new PropertyValueFactory<Book.UserBook,String>("Genre"));
+        ub_title.setCellValueFactory(new PropertyValueFactory<Book.UserBook,String>("Title"));
+        ub_borrowDate.setCellValueFactory(new PropertyValueFactory<Book.UserBook,String>("borrowDate"));
+        ub_returnDate.setCellValueFactory(new PropertyValueFactory<Book.UserBook,String>("returnDate"));
+        ou_SSN.setCellValueFactory(new PropertyValueFactory<User.OtherUser,String>("SSN"));
+        ou_firstNAme.setCellValueFactory(new PropertyValueFactory<User.OtherUser,String>("firstName"));
+        ou_lastName.setCellValueFactory(new PropertyValueFactory<User.OtherUser,String>("lastName"));
+        ou_times.setCellValueFactory(new PropertyValueFactory<User.OtherUser,String>("times"));
+        obd_SSN.setCellValueFactory(new PropertyValueFactory<Borrow.otherBorrowDetail,String>("SSN"));
+        obd_fullName.setCellValueFactory(new PropertyValueFactory<Borrow.otherBorrowDetail,String>("fullName"));
+        obd_returnDate.setCellValueFactory(new PropertyValueFactory<Borrow.otherBorrowDetail,String>("returnDate"));
+        obd_lastDate.setCellValueFactory(new PropertyValueFactory<Borrow.otherBorrowDetail,String>("lastDate"));
+        obd_borrowDate.setCellValueFactory(new PropertyValueFactory<Borrow.otherBorrowDetail,String>("borrowDate"));
+        o_bookID.setCellValueFactory(new PropertyValueFactory<Book.OtherBook,String>("bookId"));
+        o_bookTitle.setCellValueFactory(new PropertyValueFactory<Book.OtherBook,String>("Title"));
+        o_bookGenre.setCellValueFactory(new PropertyValueFactory<Book.OtherBook,String>("Genre"));
+        o_bookTimes.setCellValueFactory(new PropertyValueFactory<Book.OtherBook,String>("Times"));
         borrowSSN.setCellValueFactory(new PropertyValueFactory<Borrow,String>("SSN"));
         borrowID.setCellValueFactory(new PropertyValueFactory<Borrow,String>("bookID"));
         borrowDate.setCellValueFactory(new PropertyValueFactory<Borrow,String>("borrowDate"));

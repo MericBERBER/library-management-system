@@ -20,6 +20,185 @@ public class adminLoginModel {
         if(connection==null) System.exit(1);
 
     }
+    public ObservableList<Book.UserBook> getOtherUserDetail(String SSN){
+        ObservableList list = FXCollections.observableArrayList();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT book.bookID, book.title, book.genre, T.borrowDate, T.returnDate\n" +
+                "FROM\n" +
+                "(SELECT * FROM borrow WHERE SSN = ? ) as T\n" +
+                "INNER JOIN book\n" +
+                "ON book.bookID = T.bookID";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,SSN);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                Book book = new Book();
+                Book.UserBook userBook = book. new UserBook();
+                userBook.setBookId(resultSet.getString(1));
+                userBook.setTitle(resultSet.getString(2));
+                userBook.setGenre(resultSet.getString(3));
+                userBook.setBorrowDate(resultSet.getString(4));
+                userBook.setReturnDate(resultSet.getString(5));
+                list.add(userBook);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return  list;
+    }
+
+    public ObservableList<User.OtherUser> getOtherUser(String limit){
+        ObservableList list = FXCollections.observableArrayList();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT users.SSN, users.firstName, users.lastName, T.HowMany\n" +
+                "FROM (Select count(bookID) as HowMany, SSN \n" +
+                "From borrow \n" +
+                "Group by SSN \n" +
+                "Order By Count(SSN) \n" +
+                "DESC LIMIT ? ) AS T\n" +
+                "INNER JOIN users\n" +
+                "ON users.SSN = T.SSN";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, Integer.parseInt(limit));
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                User user = new User();
+                User.OtherUser otherUser = user. new OtherUser();
+                otherUser.setSSN(resultSet.getString(1));
+                otherUser.setFirstName(resultSet.getString(2));
+                otherUser.setLastName(resultSet.getString(3));
+                otherUser.setTimes(resultSet.getString(4));
+                list.add(otherUser);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return  list;
+    }
+
+    public ObservableList<Borrow.otherBorrowDetail> getOtherBookDetail(String bookID){
+        ObservableList list = FXCollections.observableArrayList();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT T.borrowDate, T.returnDate, T.lastDate, T.SSN, CONCAT(users.firstName,\" \", users.lastName)  AS BorrowBy\n" +
+                "FROM\n" +
+                "(SELECT * FROM borrow\n" +
+                "WHERE borrow.bookID = ? ) as T\n" +
+                "INNER JOIN users\n" +
+                "ON T.SSN = users.SSN;";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,bookID);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                Borrow borrow = new Borrow();
+                Borrow.otherBorrowDetail otherBorrowDetail = borrow. new otherBorrowDetail();
+                otherBorrowDetail.setBorrowDate(resultSet.getString(1));
+                otherBorrowDetail.setReturnDate(resultSet.getString(2));
+                otherBorrowDetail.setLastDate(resultSet.getString(3));
+                otherBorrowDetail.setSSN(resultSet.getString(4));
+                otherBorrowDetail.setFullName(resultSet.getString(5));
+                list.add(otherBorrowDetail);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return list;
+
+    }
+
+    public ObservableList<Book.OtherBook> getOtherBook(String limit){
+        ObservableList list = FXCollections.observableArrayList();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "Select book.bookID, book.title,book.genre, T.HowMany FROM (Select count(SSN) as HowMany, bookID From borrow Group by bookID Order By Count(SSN) DESC LIMIT ? ) as T INNER JOIN book ON book.bookID = T.bookID;";
+
+        try {
+           preparedStatement = connection.prepareStatement(query);
+           preparedStatement.setInt(1,Integer.valueOf(limit));
+           resultSet = preparedStatement.executeQuery();
+
+           while(resultSet.next()){
+
+               Book book = new Book();
+               Book.OtherBook otherBook = book. new OtherBook();
+               otherBook.setBookId(resultSet.getString(1));
+               otherBook.setTitle(resultSet.getString(2));
+               otherBook.setGenre(resultSet.getString(3));
+               otherBook.setTimes(resultSet.getString(4));
+               list.add(otherBook);
+
+           }
+
+        }catch (Exception e){
+                e.printStackTrace();
+        }
+
+        return list;
+
+    }
+
+    public Borrow.BorrowDetail getBorrowDetail(String SSN, String bookID) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query ="SELECT * FROM\n" +
+                "(SELECT book.authorID,book.title, book.genre,book.pageNumber,book.publisher,book.publishedDate,\n" +
+                "CONCAT(users.lastName,\" \", users.firstName) as fullName, \n" +
+                "CONCAT(users.streetName,\",\",users.city,\",\",users.zipCode) as addresses,\n" +
+                "users.birthDate, users.userName, users.pass\n" +
+                "FROM users, book\n" +
+                "WHERE users.SSN=? AND book.bookID=?) as T\n" +
+                "INNER JOIN author\n" +
+                "ON author.authorID = T.authorID;";
+
+        try {
+            Borrow borrow = new Borrow();
+            Borrow.BorrowDetail borrowDetail = borrow.new BorrowDetail();
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, Integer.parseInt(SSN));
+            preparedStatement.setInt(2, Integer.parseInt(bookID));
+            resultSet = preparedStatement.executeQuery();
+           while(resultSet.next()){
+               borrowDetail.setAuthorID(resultSet.getString(1));
+               borrowDetail.setTitle(resultSet.getString(2));
+               borrowDetail.setGenre(resultSet.getString(3));
+               borrowDetail.setPageNumber(resultSet.getString(4));
+               borrowDetail.setPublisher(resultSet.getString(5));
+               borrowDetail.setPublishedDate(resultSet.getString(6));
+               borrowDetail.setFullName(resultSet.getString(7));
+               borrowDetail.setAddress(resultSet.getString(8));
+               borrowDetail.setBirthDate(resultSet.getString(9));
+               borrowDetail.setUserName(resultSet.getString(10));
+               borrowDetail.setPass(resultSet.getString(11));
+               borrowDetail.setAuthorFullName(resultSet.getString(13)+" "+resultSet.getString(14));
+               System.out.println(borrowDetail.toString()+"123456");
+           }
+            return borrowDetail;
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return  null;
+        }
+        finally {
+
+        }
+
+
+    }
 
     public ObservableList<Borrow> searchBorrow(String borrowDate,String returnDate,String lastDate,String SSN, String bookID) throws SQLException {
 
@@ -108,36 +287,40 @@ public class adminLoginModel {
 
     }
 
-    public boolean deleteBorrow(Date borrowDate, Date returnDate, Date lastDate, String SSN, String bookID) throws SQLException {
+    public boolean deleteBorrow(Date borrowDate, Date lastDate, String SSN, String bookID) throws SQLException {
         PreparedStatement preparedStatement = null;
-        String query ="DELETE FROM borrow WHERE borrowDate=? AND returnDate=? AND lastDate=? AND SSN=? AND bookID=?";
+        String query ="DELETE FROM borrow WHERE borrowDate=? AND lastDate=? AND SSN=? AND bookID=?";
 
         try {
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setDate(1,borrowDate);
-            preparedStatement.setDate(2,returnDate);
-            preparedStatement.setDate(3,lastDate);
-            preparedStatement.setString(4,SSN);
-            preparedStatement.setString(5,bookID);
-            preparedStatement.execute();
-            System.out.println("Borrow Deleted");
-            return true;
+            preparedStatement.setString(1, String.valueOf(borrowDate));
+            preparedStatement.setString(2, String.valueOf(lastDate));
+            preparedStatement.setString(3,SSN);
+            preparedStatement.setString(4,bookID);
+            if(preparedStatement.execute()){
+                System.out.println("Borrow Deleted");
+                return true;
+            }
+
         }catch (Exception E){
+            E.printStackTrace();
             System.out.println("Borrow does not deleted.");
             return false;
         }
-
+            return false;
     }
 
     public boolean addBorrow( String borrowDate,String returnDate,String lastDate,String SSN, String bookID){
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String query = "INSERT INTO borrow values(?,?,?,?,?)";
+        String query = "INSERT INTO borrow(borrowDate,returnDate,lastDate,SSN,bookID) values(?,?,?,?,?)";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,borrowDate);
             if(returnDate.equals("")){
-                preparedStatement.setDate(2,null);
+                preparedStatement.setString(2,null);
+            }else{
+                preparedStatement.setString(2,returnDate);
             }
             preparedStatement.setString(3,lastDate);
             preparedStatement.setString(4,SSN);
@@ -222,14 +405,17 @@ public class adminLoginModel {
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,authorID);
-            preparedStatement.execute();
-            System.out.println("SSN = " +authorID +" deleted.");
-            return true;
+           if( preparedStatement.execute()){
+               System.out.println("SSN = " +authorID +" deleted.");
+               return true;
+           }
+
         }catch (Exception e){
+            e.printStackTrace();
             System.out.println("SSN = " +authorID +" not deleted.");
             return false;
         }
-
+            return false;
     }
 
 

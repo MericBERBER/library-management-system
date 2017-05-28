@@ -11,7 +11,7 @@ public class MySqlConnector {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection
-                    ("jdbc:mysql://localhost:3306/library","root","password");
+                    ("jdbc:mysql://localhost:3306/library","root","KillerE2200");
             System.out.println("Database connected");
             return con;
         }catch (Exception e){

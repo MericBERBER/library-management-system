@@ -39,7 +39,7 @@
          <image>
             <Image url="/img/password.png" />
          </image></ImageView>
-      <Label layoutX="6.0" layoutY="6.0" prefHeight="83.0" prefWidth="591.0" text=" Library Management System" textFill="#0dedf8">
+      <Label layoutX="6.0" layoutY="6.0" prefHeight="83.0" prefWidth="591.0" text="                  User Login" textAlignment="CENTER">
          <graphic>
             <ImageView fitHeight="80.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,7 +48,7 @@
             </ImageView>
          </graphic>
          <font>
-            <Font name="Script MT Bold" size="39.0" />
+            <Font name="Agency FB" size="39.0" />
          </font>
       </Label>
       <ImageView id="UsernameIcon" fitHeight="60.0" fitWidth="77.0" layoutX="478.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">

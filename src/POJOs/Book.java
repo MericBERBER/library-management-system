@@ -13,6 +13,101 @@ public class Book {
     private int piece;
     private String Author;
 
+    public class UserBook {
+
+        private String bookId;
+        private String Title;
+        private String Genre;
+        private String borrowDate;
+        private String returnDate;
+
+        public UserBook() {
+        }
+
+        public String getBookId() {
+            return bookId;
+        }
+
+        public void setBookId(String bookId) {
+            this.bookId = bookId;
+        }
+
+        public String getTitle() {
+            return Title;
+        }
+
+        public void setTitle(String title) {
+            Title = title;
+        }
+
+        public String getGenre() {
+            return Genre;
+        }
+
+        public void setGenre(String genre) {
+            Genre = genre;
+        }
+
+        public String getBorrowDate() {
+            return borrowDate;
+        }
+
+        public void setBorrowDate(String borrowDate) {
+            this.borrowDate = borrowDate;
+        }
+
+        public String getReturnDate() {
+            return returnDate;
+        }
+
+        public void setReturnDate(String returnDate) {
+            this.returnDate = returnDate;
+        }
+    }
+
+    public class OtherBook{
+
+        private String bookId;
+        private String Title;
+        private String Genre;
+        private String Times;
+
+        public OtherBook(){
+
+        }
+
+        public String getBookId() {
+            return bookId;
+        }
+
+        public void setBookId(String bookId) {
+            this.bookId = bookId;
+        }
+
+        public String getTitle() {
+            return Title;
+        }
+
+        public void setTitle(String title) {
+            Title = title;
+        }
+
+        public String getGenre() {
+            return Genre;
+        }
+
+        public void setGenre(String genre) {
+            Genre = genre;
+        }
+
+        public String getTimes() {
+            return Times;
+        }
+
+        public void setTimes(String times) {
+            Times = times;
+        }
+    }
     public Book() {}
 
     public Book(String bookId, String title, String genre, int pageNumber, String publisher, Date publishDate, int piece, String author) {

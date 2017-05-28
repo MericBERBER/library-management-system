@@ -14,6 +14,48 @@ public class User {
     private String userName;
     private String pass;
 
+    public class OtherUser{
+        private String SSN;
+        private String firstName;
+        private String lastName;
+        private String times;
+
+        public OtherUser() {
+        }
+
+        public String getSSN() {
+            return SSN;
+        }
+
+        public void setSSN(String SSN) {
+            this.SSN = SSN;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
+
+        public String getTimes() {
+            return times;
+        }
+
+        public void setTimes(String times) {
+            this.times = times;
+        }
+    }
+
     public User(){}
 
     public User(String ssn, String firstName, String lastName, Date birthDate, String streetName, String zipCode, String city, String userName, String pass) {
