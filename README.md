@@ -1,3 +1,3 @@
 http://imgur.com/PMehDTN
 
-![ScreenShot](https://imgur.com/PMehDTN)
+![image](https://imgur.com/PMehDTN)
