@@ -1,3 +1,5 @@
+Herhangi bir ORM kullanılmamıştır.
+
 ## Kullanıcı işlemleri 
 - Kitap arama
 - Ödünç alınan kitapları görme
